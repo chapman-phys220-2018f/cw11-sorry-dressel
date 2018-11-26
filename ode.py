@@ -31,7 +31,7 @@ def euler_2(N, u):
 
 def Heuns_1(initP, change):
     Approx_2 = euler_1(initP, change)
-    return initP + ((change/2)*(I * (initP + Approx_2)))
+    return initP + ((change/2)*(I @ (initP + Approx_2)))
 
 def Heuns_2(N, u):
     xRange = np.arange(0, 10*np.pi, 2*np.pi/N)
@@ -41,7 +41,7 @@ def Heuns_2(N, u):
     n = 0
     for x in xRange:
         n += 1
-        heunApprox[n] = Heuns_1(heunApprox[n-1], change)
+        heunApprox[n,:] = Heuns_1(heunApprox[n-1,:], change)
     return heunApprox
 
 def rungeKuttaSecond_1(initP, change):
@@ -56,7 +56,7 @@ def rungeKuttaSecond_2(N, u):
     RKSApprox[0] = u
     n = 0
     for x in xRange:
-        RKSApprox[n] = rungeKuttaSecond_1(RKSApprox[n-1], change)
+        RKSApprox[n,:] = rungeKuttaSecond_1(RKSApprox[n-1,:], change)
     return RKSApprox
 
 def rungeKuttaFourth_1(initP, change):
@@ -73,5 +73,5 @@ def rungeKuttaFourth_2(N, u):
     RKSApprox[0] = u
     n = 0
     for x in xRange:
-        RKSApprox[n] = rungeKuttaFourth_1(RKSApprox[n-1], change)
+        RKSApprox[n,:] = rungeKuttaFourth_1(RKSApprox[n-1,:], change)
     return RKSApprox
