@@ -56,6 +56,7 @@ def rungeKuttaSecond_2(N, u):
     RKSApprox[0] = u
     n = 0
     for x in xRange:
+        n+=1
         RKSApprox[n,:] = rungeKuttaSecond_1(RKSApprox[n-1,:], change)
     return RKSApprox
 
@@ -73,5 +74,6 @@ def rungeKuttaFourth_2(N, u):
     RKSApprox[0] = u
     n = 0
     for x in xRange:
+        n+=1
         RKSApprox[n,:] = rungeKuttaFourth_1(RKSApprox[n-1,:], change)
     return RKSApprox
